@@ -1,5 +1,13 @@
-const button = document.getElementById("helloBtn");
+document.querySelectorAll(".btn").forEach(button => {
 
-button.addEventListener("click", () => {
-    alert("Xin chào từ JavaScript!");
+    button.addEventListener("mouseenter", () => {
+
+        button.style.transform = "scale(1.03)";
+    });
+
+    button.addEventListener("mouseleave", () => {
+
+        button.style.transform = "scale(1)";
+    });
+
 });
