@@ -52,7 +52,6 @@ body::after{
 
     opacity:1;
     visibility:visible;
-    animation:titleFade 1.2s ease forwards;
     animation-delay:1s;
     z-index:100;
 }
