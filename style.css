@@ -24,12 +24,14 @@ body::before{
 
     background:
         url("assets/images/bg.jpg")
-        center center/cover no-repeat;
+         background-repeat:no-repeat;
+         background-position:center center;
+         background-size:contain;
 
     filter:blur(2px) brightness(.5);
     transform:scale(1.08);
 
-    z-index:-2;
+    z-index:-1;
 }
 
 body::after{
