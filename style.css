@@ -37,7 +37,61 @@ body::after{
     z-index:1;
 }
 
-.login-box{
+.hero-title{
+    position:absolute;
+    top:12%;
+    left:50%;
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+    width:100%;
+    max-width:1000px;
+
+    justify-content:center;
+
+    z-index:10;
+}
+
+.hero-title h1{
+    color:rgba(255,255,255,.9);
+
+    font-size:clamp(32px,5vw,72px);
+
+    font-weight:300;
+
+    letter-spacing:12px;
+
+    text-transform:uppercase;
+
+    white-space:nowrap;
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,.15);
+}
+
+.hero-title .line{
+    width:120px;
+    height:1px;
+
+    background:rgba(255,255,255,.4);
+
     position:relative;
-    z-index:2;
+}
+
+.hero-title .line::after{
+    content:"";
+    position:absolute;
+
+    width:40px;
+    height:3px;
+
+    background:rgba(255,255,255,.9);
+
+    top:-1px;
+    left:50%;
+
+    transform:translateX(-50%);
 }
