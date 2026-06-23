@@ -38,9 +38,9 @@ body::after{
 }
 
 .hero-title{
-    position:absolute;
-    top:12%;
-    left:50%;
+    position:relative;
+    text-align:center;
+    z-index:10;
 
     transform:translateX(-50%);
 
@@ -53,6 +53,16 @@ body::after{
 
     animation:titleFade 1.2s ease forwards;
     animation-delay:1.4s;
+}
+
+.hero{
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
 }
 
 .hero-title h1{
@@ -263,4 +273,48 @@ body{
     pointer-events:none;
 
     z-index:10000;
+}
+
+section:not(.hero){
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+    z-index:10;
+
+    padding:100px 10%;
+}
+
+.scroll-indicator{
+    position:absolute;
+
+    bottom:40px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:rgba(255,255,255,.5);
+
+    letter-spacing:4px;
+
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateX(-50%);
+    }
+
+    50%{
+        transform:
+        translateX(-50%)
+        translateY(10px);
+    }
 }
