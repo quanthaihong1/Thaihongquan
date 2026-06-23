@@ -35,14 +35,19 @@ body::after{
 }
 .hero{
     height:100vh;
+
+    position:relative;   /* bắt buộc để absolute hoạt động */
+
     display:flex;
     justify-content:center;
     align-items:center;
-    position:relative;
 }
-
 .hero-title{
-    position:relative;
+    position:absolute;
+
+    top:10%;        /* chỉnh số này để canh đúng đầu */
+    left:50%;
+
     text-align:center;
     z-index:10;
 
