@@ -24,14 +24,13 @@ body::before{
 
     background:
         url("assets/images/bg.jpg")
-         background-repeat:no-repeat;
          background-position:center center;
          background-size:contain;
 
-    filter:blur(1px) brightness(.8);
+    filter:blur(2px) brightness(.5);
     transform:scale(1.08);
 
-    z-index:0;
+    z-index:-2;
 }
 
 body::after{
@@ -39,6 +38,6 @@ body::after{
     position:absolute;
     inset:0;
     background:rgba(0,0,0,.35);
-    z-index:0;
+    z-index:-1;
 }
 
