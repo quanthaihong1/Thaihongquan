@@ -52,7 +52,8 @@ body::after{
 
     opacity:1;
     visibility:visible;
-
+    animation:titleFade 1.2s ease forwards;
+    animation-delay:1s;
     z-index:100;
 }
 .hero-title h1{
@@ -62,7 +63,7 @@ body::after{
     letter-spacing:8px;
 
     white-space:nowrap;
-
+    animation:tracking 1.5s ease forwards;
     color:rgba(255,255,255,.95);
     text-transform:uppercase;
 }
@@ -88,14 +89,29 @@ body::after{
 }
 
 @keyframes titleFade{
-0%{
-    opacity:0;
-    transform:translate(-50%,20px);
+    0%{
+        opacity:0;
+        transform:translate(-50%,30px);
+        filter:blur(8px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translate(-50%,0);
+        filter:blur(0);
+    }
 }
-100%{
-    opacity:1;
-    transform:translate(-50%,0);
-}
+
+@keyframes tracking{
+    from{
+        letter-spacing:20px;
+        opacity:0;
+    }
+
+    to{
+        letter-spacing:8px;
+        opacity:1;
+    }
 }
 
 section{
