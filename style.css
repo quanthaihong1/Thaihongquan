@@ -44,18 +44,14 @@ body::after{
 }
 .hero-title{
     position:absolute;
-
-    top:10%;        /* chỉnh số này để canh đúng đầu */
+    top:10%;
     left:50%;
     transform:translateX(-50%);
-    text-align:center;
-    z-index:10;
-    
-    opacity:0;
-    visibility:hidden;
 
-    animation:titleFade 1.2s ease forwards;
-    animation-delay:1.4s;
+    opacity:1;
+    visibility:visible;
+
+    z-index:100;
 }
 .hero-title h1{
     font-family:'Montserrat',sans-serif;
