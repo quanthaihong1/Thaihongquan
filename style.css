@@ -47,10 +47,10 @@ body::after{
 
     top:10%;        /* chỉnh số này để canh đúng đầu */
     left:50%;
-
+    transform:translateX(-50%);
     text-align:center;
     z-index:10;
-
+    
     opacity:0;
     visibility:hidden;
 
