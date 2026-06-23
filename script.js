@@ -48,4 +48,17 @@ links.forEach(item => {
 
     });
 
+    const spotlight = document.querySelector(".spotlight");
+
+document.addEventListener("mousemove",(e)=>{
+
+    spotlight.style.background =
+    `radial-gradient(
+        300px circle at ${e.clientX}px ${e.clientY}px,
+        rgba(255,255,255,.08),
+        transparent 70%
+    )`;
+
+});
+
 });
