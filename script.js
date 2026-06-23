@@ -1,56 +1,63 @@
 const sections = document.querySelectorAll("section");
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
         if(entry.isIntersecting){
             entry.target.classList.add("show");
         }
-
     });
 },{
     threshold:0.15
 });
 
-sections.forEach(section => {
-    observer.observe(section);
-});
+sections.forEach(section=>observer.observe(section));
 
 
+// Cursor
 const cursor = document.querySelector(".cursor");
 const dot = document.querySelector(".cursor-dot");
 
 window.addEventListener("mousemove",(e)=>{
 
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+    if(cursor){
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+    }
 
-    dot.style.left = e.clientX + "px";
-    dot.style.top = e.clientY + "px";
+    if(dot){
+        dot.style.left = e.clientX + "px";
+        dot.style.top = e.clientY + "px";
+    }
 
 });
 
-const links = document.querySelectorAll("a, button, .skill-card, .project-card");
 
-links.forEach(item => {
+// Hover effect
+const links = document.querySelectorAll(
+    "a, button, .skill-card, .project-card"
+);
 
-    item.addEventListener("mouseenter", () => {
+links.forEach(item=>{
 
+    item.addEventListener("mouseenter",()=>{
         cursor.style.width = "70px";
         cursor.style.height = "70px";
-
     });
 
-    item.addEventListener("mouseleave", () => {
-
+    item.addEventListener("mouseleave",()=>{
         cursor.style.width = "40px";
         cursor.style.height = "40px";
-
     });
 
-    const spotlight = document.querySelector(".spotlight");
+});
+
+
+// Spotlight
+const spotlight = document.querySelector(".spotlight");
 
 document.addEventListener("mousemove",(e)=>{
+
+    if(!spotlight) return;
 
     spotlight.style.background =
     `radial-gradient(
@@ -58,7 +65,5 @@ document.addEventListener("mousemove",(e)=>{
         rgba(255,255,255,.08),
         transparent 70%
     )`;
-
-});
 
 });
