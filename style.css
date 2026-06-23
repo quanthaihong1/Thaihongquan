@@ -50,6 +50,9 @@ body::after{
 
     z-index:10;
 
+    opacity:0;
+    visibility:hidden;
+
     animation:titleFade 1.2s ease forwards;
     animation-delay:1.4s;
 }
@@ -95,13 +98,15 @@ body::after{
 }
 
 @keyframes titleFade{
-    from{
+    0%{
         opacity:0;
+        visibility:visible;
         transform:translate(-50%,20px);
     }
 
-    to{
+    100%{
         opacity:1;
+        visibility:visible;
         transform:translate(-50%,0);
     }
 }
