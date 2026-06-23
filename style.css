@@ -110,3 +110,114 @@ body::after{
         transform:translate(-50%,0);
     }
 }
+
+
+section{
+    position:relative;
+    z-index:10;
+
+    width:min(900px,90%);
+    margin:120px auto;
+
+    text-align:center;
+}
+
+section h2{
+    font-family:'Montserrat',sans-serif;
+
+    font-weight:200;
+    letter-spacing:8px;
+
+    color:#fff;
+
+    margin-bottom:40px;
+}
+
+.about p{
+    color:rgba(255,255,255,.7);
+
+    line-height:1.8;
+    font-size:18px;
+}
+
+.skill-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+}
+
+.skill-card{
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.04);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    transition:.4s;
+}
+
+.skill-card:hover{
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.08);
+
+    box-shadow:0 0 25px rgba(255,255,255,.08);
+}
+
+.projects{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.project-card{
+    padding:35px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    transition:.4s;
+}
+
+.project-card h3{
+    color:white;
+    margin-bottom:10px;
+}
+
+.project-card p{
+    color:rgba(255,255,255,.6);
+}
+
+.project-card:hover{
+    transform:scale(1.02);
+}
+
+.contact{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact a{
+    color:white;
+
+    text-decoration:none;
+
+    letter-spacing:3px;
+
+    transition:.3s;
+}
+
+.contact a:hover{
+    opacity:.6;
+}
