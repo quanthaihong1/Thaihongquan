@@ -29,3 +29,23 @@ window.addEventListener("mousemove",(e)=>{
     dot.style.top = e.clientY + "px";
 
 });
+
+const links = document.querySelectorAll("a, button, .skill-card, .project-card");
+
+links.forEach(item => {
+
+    item.addEventListener("mouseenter", () => {
+
+        cursor.style.width = "70px";
+        cursor.style.height = "70px";
+
+    });
+
+    item.addEventListener("mouseleave", () => {
+
+        cursor.style.width = "40px";
+        cursor.style.height = "40px";
+
+    });
+
+});
