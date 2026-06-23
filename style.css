@@ -21,7 +21,7 @@ body::before{
     background:url("assets/images/bg.jpg")
     center center / cover no-repeat;
 
-    filter:blur(3px) brightness(.5);
+    filter:blur(1px) brightness(.9);
     transform:scale(1.08);
 
     z-index:0;
