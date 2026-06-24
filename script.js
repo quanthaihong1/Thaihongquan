@@ -1,16 +1,27 @@
+let lastScrollY = window.scrollY;
+let isScrollingDown = true;
+
+window.addEventListener("scroll", ()=>{
+    isScrollingDown = window.scrollY > lastScrollY;
+    lastScrollY = window.scrollY;
+});
+
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver((entries)=>{
     entries.forEach((entry)=>{
         if(entry.isIntersecting){
             entry.target.classList.add("show");
+        } else {
+            entry.target.classList.remove("show");
         }
     });
 },{
-    threshold:0.15
+    threshold:0.35
 });
 
 sections.forEach(section=>observer.observe(section));
+
 
 
 // Cursor
