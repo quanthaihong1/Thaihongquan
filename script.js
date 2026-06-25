@@ -106,38 +106,84 @@ if (!isTouch && spotlight) {
     spotlight.style.display = "none";
 }
 
-// --- Controlled snapping (mouse only) ---
+// --- Controlled snapping for mouse and touch ---
 let isAutoScrolling = false;
+let scrollLockTimer = null;
+let touchStartY = null;
+let touchMoving = false;
 
 const getNearestSectionIndex = () => {
-    const viewportCenter = window.innerHeight / 2;
     let bestIndex = 0;
     let bestDist = Infinity;
     sections.forEach((s, i) => {
         const rect = s.getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
-        const dist = Math.abs(center - viewportCenter);
-        if (dist < bestDist) { bestDist = dist; bestIndex = i; }
+        const dist = Math.abs(rect.top);
+        if (dist < bestDist) {
+            bestDist = dist;
+            bestIndex = i;
+        }
     });
     return bestIndex;
 };
 
-const scrollToSection = (index) => {
-    if (index < 0 || index >= sections.length) return;
+const lockScroll = () => {
     isAutoScrolling = true;
-    sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(() => { isAutoScrolling = false; }, 700);
+    clearTimeout(scrollLockTimer);
+    scrollLockTimer = setTimeout(() => {
+        isAutoScrolling = false;
+    }, 1400);
 };
 
-// Wheel handler
+const scrollToSection = (index) => {
+    if (index < 0 || index >= sections.length) return;
+    if (isAutoScrolling) return;
+    lockScroll();
+    sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+const handleSectionScroll = (delta) => {
+    const current = getNearestSectionIndex();
+    if (delta > 0) {
+        scrollToSection(Math.min(current + 1, sections.length - 1));
+    } else {
+        scrollToSection(Math.max(current - 1, 0));
+    }
+};
+
 window.addEventListener('wheel', (e) => {
     if (isTouch) return;
-    if (isAutoScrolling) { e.preventDefault(); return; }
+    if (isAutoScrolling) {
+        e.preventDefault();
+        return;
+    }
     e.preventDefault();
     const delta = e.deltaY;
-    const current = getNearestSectionIndex();
-    if (delta > 0) scrollToSection(Math.min(current + 1, sections.length - 1));
-    else scrollToSection(Math.max(current - 1, 0));
+    if (Math.abs(delta) < 24) return;
+    handleSectionScroll(delta);
 }, { passive: false });
+
+window.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+        touchStartY = e.touches[0].clientY;
+        touchMoving = true;
+    }
+}, { passive: true });
+
+window.addEventListener('touchmove', (e) => {
+    if (!touchMoving || touchStartY === null) return;
+    e.preventDefault();
+}, { passive: false });
+
+window.addEventListener('touchend', (e) => {
+    if (!touchMoving || touchStartY === null) return;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+    const threshold = 50;
+    if (Math.abs(deltaY) > threshold) {
+        handleSectionScroll(deltaY);
+    }
+    touchStartY = null;
+    touchMoving = false;
+});
 
 
